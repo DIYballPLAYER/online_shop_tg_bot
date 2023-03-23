@@ -8,6 +8,7 @@ from aiogram.contrib.fsm_storage.redis import RedisStorage2
 from tgbot.config import load_config
 from tgbot.filters import register_all_filters
 from tgbot.handlers import register_all_handlers
+from tgbot.models.models import db
 
 logger = logging.getLogger(__name__)
 
@@ -28,13 +29,16 @@ async def main():
     register_all_filters(dp)
     register_all_handlers(dp)
 
-    # start
     try:
+        await db.set_bind(f'postgresql://'
+                          f'{config.db.user}:{config.db.password}@'
+                          f'{config.db.host}:5432/{config.db.database}')
         await dp.start_polling()
     finally:
         await dp.storage.close()
         await dp.storage.wait_closed()
         await bot.session.close()
+        await db.pop_bind().close()
 
 
 if __name__ == '__main__':
