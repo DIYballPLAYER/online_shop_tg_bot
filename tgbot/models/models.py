@@ -1,5 +1,5 @@
 from gino import Gino
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, BigInteger
 
 db = Gino()
 
@@ -18,7 +18,8 @@ class Products(db.Model):
     Id = Column(Integer(), primary_key=True)
     name = Column(String(60))
     photo_url = Column(String(150), unique=True)
-    price = Column(Integer())
+    description = Column(String(600))
+    price = Column(BigInteger())
     category = Column(ForeignKey('category.Id'))
 
 
@@ -32,8 +33,17 @@ class Category(db.Model):
 
 class Cart(db.Model):
 
-    __tablename__ = 'cart'
+    __tablename__ = "cart"
 
     Id = Column(Integer(), primary_key=True)
-    order = Column(ForeignKey("products.Id"))
-    order_owner = Column(ForeignKey("users.tg_id"))
+    user_id = Column(ForeignKey("users.tg_id"))
+
+
+class CartProducts(db.Model):
+
+    __tablename__ = "cart products"
+
+    Id = Column(Integer(), primary_key=True)
+    cart_id = Column(ForeignKey("cart.Id"))
+    products_id = Column(ForeignKey("products.Id"))
+    amount = Column(BigInteger(), default=0)

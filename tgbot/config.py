@@ -4,6 +4,8 @@ from pathlib import Path
 from environs import Env
 
 BASE_DIR = Path(__file__).parent.parent
+MEDIA_DIR = BASE_DIR / "media/"
+
 
 
 @dataclass

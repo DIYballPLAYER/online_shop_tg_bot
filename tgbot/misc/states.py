@@ -7,16 +7,23 @@ class CreateCategoryState(StatesGroup):
 
 class CreateProductState(StatesGroup):
     name = State()
-    description = State()
     category = State()
     price = State()
-    image = State()
-    confirm = State()
+    description = State()
+    photo_url = State()
 
 
+class DeleteCategory(StatesGroup):
+    callback_query = State()
 
 
+class DeleteProduct(StatesGroup):
+    callback_query = State()
 
 
+class OrderProduct(StatesGroup):
+    choose = State()
+    cart_id = State()
+    products_id = State()
 
 
