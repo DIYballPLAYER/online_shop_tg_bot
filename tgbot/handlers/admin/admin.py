@@ -75,7 +75,7 @@ async def create_product_category(callback: CallbackQuery, state=CreateProductSt
     await CreateProductState.price.set()
     await callback.bot.send_message(
         callback.from_user.id,
-        "Отлично! Отправьте цену на продукт"
+        "Отлично! Отправьте цену на продукт!"
     )
 
 
