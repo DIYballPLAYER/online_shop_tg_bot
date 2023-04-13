@@ -1,7 +1,7 @@
 from aiogram.types import ReplyKeyboardMarkup
 
-from tgbot.buttons.reply import ADD_PRODUCT, ADD_PRODUCT_CAT, DELETE_PRODUCT, DELETE_PRODUCT_CAT, ORDER, CATEGORY_LIST,\
-    PRODUCT_LIST, CART
+from tgbot.buttons.reply import ADD_PRODUCT, ADD_PRODUCT_CAT, DELETE_PRODUCT, DELETE_PRODUCT_CAT, ORDER, CATEGORY_LIST, \
+    PRODUCT_LIST, MY_CART
 
 ADMIN_KEYBOARD = ReplyKeyboardMarkup([
     [ADD_PRODUCT, ADD_PRODUCT_CAT], [DELETE_PRODUCT, DELETE_PRODUCT_CAT], [CATEGORY_LIST, PRODUCT_LIST]
@@ -9,5 +9,5 @@ ADMIN_KEYBOARD = ReplyKeyboardMarkup([
 
 
 USER_KEYBOARD = ReplyKeyboardMarkup([
-    [ORDER], [CART]
+    [ORDER], [MY_CART]
 ], resize_keyboard=True)

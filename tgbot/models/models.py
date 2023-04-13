@@ -19,7 +19,7 @@ class Products(db.Model):
     name = Column(String(60))
     photo_url = Column(String(150), unique=True)
     description = Column(String(600))
-    price = Column(BigInteger())
+    price = Column(Integer())
     category = Column(ForeignKey('category.Id'))
 
 
