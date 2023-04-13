@@ -22,7 +22,7 @@ class DeleteProduct(StatesGroup):
 
 
 class OrderProduct(StatesGroup):
-    choose = State()
+    category = State()
     cart_id = State()
     products_id = State()
 
